@@ -1,6 +1,8 @@
-﻿# VPet.Plugin.DiscordRPC
+﻿# Chrono Ultrawide Ark
 Enables ultrawide 21:9 resolution options for [Chrono Ark](https://store.steampowered.com/app/1188930/_/).
 ![banner](./assets/ultrawide.png)
+![field](./assets/field.jpg)
+![battle](./assets/battle.jpg)
 
 ## Requirement
 - [Visual Studio Community 2022](https://visualstudio.microsoft.com/)
