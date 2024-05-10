@@ -3,6 +3,9 @@ Enables ultrawide 21:9 resolution options for [Chrono Ark](https://store.steampo
 ![banner](./assets/ultrawide.png)
 ![field](./assets/field.jpg)
 ![battle](./assets/battle.jpg)
+![battle](./assets/party.jpg)
+![battle](./assets/event.jpg)
+![battle](./assets/select.jpg)
 
 ## Requirement
 - [Visual Studio Community 2022](https://visualstudio.microsoft.com/)

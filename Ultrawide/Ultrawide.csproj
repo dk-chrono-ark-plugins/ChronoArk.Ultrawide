@@ -406,6 +406,22 @@
   </ItemGroup>
   <!-- Compile ItemGroup Start-->
   <ItemGroup>
+    <Compile Include="Api\IConfigurable.cs" />
+    <Compile Include="Api\IPatch.cs" />
+    <Compile Include="Helper\ChildrenIterator.cs" />
+    <Compile Include="Patches\EnforcePatch.cs" />
+    <Compile Include="Patches\BuyWindowPatch.cs" />
+    <Compile Include="Patches\CampSelectPatch.cs" />
+    <Compile Include="Patches\CharStatPatch.cs" />
+    <Compile Include="Patches\CollectionsPatch.cs" />
+    <Compile Include="Patches\FieldEventSelectPatch.cs" />
+    <Compile Include="Patches\FieldUiPatch.cs" />
+    <Compile Include="Patches\FriendShipPatch.cs" />
+    <Compile Include="Patches\PassiveUnlockPatch.cs" />
+    <Compile Include="Patches\RandomEventPatch.cs" />
+    <Compile Include="Patches\SelectItemPatch.cs" />
+    <Compile Include="Patches\SelectSkillListPatch.cs" />
+    <Compile Include="Patches\UiAdjuster.cs" />
     <Compile Include="UltrawideKeys.cs" />
     <Compile Include="UltrawideMod.cs" />
     <Compile Include="Patches\ResolutionOption.cs" />
@@ -417,6 +433,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <!-- Compile ItemGroup End-->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

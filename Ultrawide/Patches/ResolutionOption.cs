@@ -1,15 +1,19 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
 using System.Linq;
+using Ultrawide.Api;
 using UnityEngine;
 
 namespace Ultrawide.Patches;
 
 #nullable enable
 
-internal class ResolutionOption(string guid)
+internal class ResolutionOption(string guid) : IPatch
 {
     internal record ExtendedResolution(int Width, int Height);
+
+    internal static Resolution CurrentResolution => SaveManager.ResolutionList[SaveManager.NowData.GameOptions.resolution];
+    internal static bool IsUsingExtendedResolution => _extendedResolutionMatrix.Contains(CurrentResolution);
 
     private static readonly ExtendedResolution[] _extendedResolutions = [
         new(2560, 1080),
@@ -25,6 +29,11 @@ internal class ResolutionOption(string guid)
 
     private Harmony? _harmony;
 
+    public string Id => "resolution-option";
+    public string Name => Id;
+    public string Description => Id;
+    public bool Mandatory => true;
+
     public void Commit()
     {
         _harmony ??= new Harmony(guid);
@@ -35,22 +44,22 @@ internal class ResolutionOption(string guid)
             ),
             postfix: new HarmonyMethod(typeof(ResolutionOption), nameof(OnResolutionListGenerated))
         );
+
+        _extendedResolutionMatrix = _extendedResolutions
+            .SelectMany(res => _extendedRefreshRates, (res, rate) => new Resolution {
+                width = res.Width,
+                height = res.Height,
+                refreshRate = rate
+            })
+            .Where(res => res.width <= Display.main.systemWidth && res.height <= Display.main.systemHeight)
+            .ToList();
     }
 
     private static void OnResolutionListGenerated(ref List<Resolution> __result)
     {
-        if (_extendedResolutionMatrix.Count == 0) {
-            _extendedResolutionMatrix = [
-                .. __result,
-                .. _extendedResolutions
-                    .SelectMany(res => _extendedRefreshRates, (res, rate) => new Resolution {
-                        width = res.Width,
-                        height = res.Height,
-                        refreshRate = rate
-                    })
-                    .Where(res => res.width <= Display.main.systemWidth && res.height <= Display.main.systemHeight)
-            ];
-        }
-        __result = _extendedResolutionMatrix;
+        __result = [
+            .. __result,
+            .. _extendedResolutionMatrix,
+        ];
     }
 }
