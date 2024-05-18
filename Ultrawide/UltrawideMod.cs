@@ -41,14 +41,9 @@ public class UltrawideMod : ChronoArkPlugin
 
         foreach (var patch in _patches) {
             if (patch.Mandatory) {
-                try {
-                    Debug.Log($"patching {patch.Name}");
-                    patch.Commit();
-                    Debug.Log("success!");
-                } catch {
-                    Debug.Log("failed!");
-                    return;
-                }
+                Debug.Log($"patching {patch.Name}");
+                patch.Commit();
+                Debug.Log("success!");
             }
         }
     }

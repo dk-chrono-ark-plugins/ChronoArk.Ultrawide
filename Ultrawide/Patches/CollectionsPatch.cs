@@ -1,7 +1,7 @@
-﻿using HarmonyLib;
+﻿using ChronoArkMod.Helper;
+using HarmonyLib;
 using System.Collections;
 using Ultrawide.Api;
-using Ultrawide.Helper;
 using UnityEngine;
 
 namespace Ultrawide.Patches;

@@ -8,7 +8,7 @@
     <LangVersion>12.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\Common\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <ReferencePath>$(ChronoArkGamePath)/ChronoArk_Data/Managed</ReferencePath>
@@ -19,11 +19,16 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <OutputPath>$(ChronoArkGamePath)\Mod\Ultrawide\Assemblies\</OutputPath>
+    <OutputPath>$(ChronoArkGamePath)\Mod\$(AssemblyName)\Assemblies\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>$(ChronoArkGamePath)\Mod\$(AssemblyName)\Assemblies\</OutputPath>
+    <Optimize>true</Optimize>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>bin\Debug\0Harmony.dll</HintPath>
+      <HintPath>..\..\Common\bin\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Accessibility">
       <Private>False</Private>
@@ -41,22 +46,22 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>bin\Debug\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\Common\bin\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Mdb">
-      <HintPath>bin\Debug\Mono.Cecil.Mdb.dll</HintPath>
+      <HintPath>..\..\Common\bin\Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Pdb">
-      <HintPath>bin\Debug\Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>..\..\Common\bin\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Rocks">
-      <HintPath>bin\Debug\Mono.Cecil.Rocks.dll</HintPath>
+      <HintPath>..\..\Common\bin\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>bin\Debug\MonoMod.RuntimeDetour.dll</HintPath>
+      <HintPath>..\..\Common\bin\MonoMod.RuntimeDetour.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.Utils">
-      <HintPath>bin\Debug\MonoMod.Utils.dll</HintPath>
+      <HintPath>..\..\Common\bin\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <Private>False</Private>
@@ -406,9 +411,29 @@
   </ItemGroup>
   <!-- Compile ItemGroup Start-->
   <ItemGroup>
+    <Compile Include="..\..\Common\Helper\BezierLineSmoother.cs">
+      <Link>Helper\BezierLineSmoother.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Helper\ChildrenIterator.cs">
+      <Link>Helper\ChildrenIterator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Helper\ComponentFetch.cs">
+      <Link>Helper\ComponentFetch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Helper\DelayedCoroutine.cs">
+      <Link>Helper\DelayedCoroutine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Helper\EventTriggerMerge.cs">
+      <Link>Helper\EventTriggerMerge.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Helper\SkillTargetTypeCheck.cs">
+      <Link>Helper\SkillTargetTypeCheck.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Helper\TextureBlitter.cs">
+      <Link>Helper\TextureBlitter.cs</Link>
+    </Compile>
     <Compile Include="Api\IConfigurable.cs" />
     <Compile Include="Api\IPatch.cs" />
-    <Compile Include="Helper\ChildrenIterator.cs" />
     <Compile Include="Patches\EnforcePatch.cs" />
     <Compile Include="Patches\BuyWindowPatch.cs" />
     <Compile Include="Patches\CampSelectPatch.cs" />
@@ -422,7 +447,6 @@
     <Compile Include="Patches\SelectItemPatch.cs" />
     <Compile Include="Patches\SelectSkillListPatch.cs" />
     <Compile Include="Patches\UiAdjuster.cs" />
-    <Compile Include="UltrawideKeys.cs" />
     <Compile Include="UltrawideMod.cs" />
     <Compile Include="Patches\ResolutionOption.cs" />
   </ItemGroup>

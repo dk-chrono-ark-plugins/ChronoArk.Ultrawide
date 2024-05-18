@@ -1,6 +1,6 @@
 ﻿namespace Ultrawide.Api;
 
-public interface IConfigurable
+internal interface IConfigurable
 {
     /// <summary>
     /// The unique ID of this configuration

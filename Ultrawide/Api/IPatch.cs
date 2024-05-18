@@ -1,6 +1,6 @@
 ﻿namespace Ultrawide.Api;
 
-public interface IPatch : IConfigurable
+internal interface IPatch : IConfigurable
 {
     /// <summary>
     /// The patch itself
